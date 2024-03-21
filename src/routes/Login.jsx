@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Input, Switcher, Title, Wrapper, Form } from "../components/auth-components"
+import { Input, Switcher, Title, Wrapper, Form } from "../style/auth-components"
 
 
 
