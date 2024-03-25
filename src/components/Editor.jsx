@@ -7,6 +7,7 @@ import { emotionList } from "../util/content";
 import { getStringDate } from "../util/get-stringed-date";
 
 
+
 const Editor = ({initData, onSubmit}) =>{
   const [input, setInput] = useState({
     createdDate : new Date(),
@@ -41,7 +42,19 @@ const Editor = ({initData, onSubmit}) =>{
   const onClickSubmitButton = () =>{
     onSubmit(input);
   }
+  //img upload
+  const [imgSrc, setImgSrc] = useState(null);
+  const onUpload = (e) =>{
+      const reader = new FileReader();
 
+      reader.onload = function(e) {
+          setImgSrc(e.target.result);
+      }
+      reader.readAsDataURL(e.target.files[0]);
+  }
+  const onClearImg = () =>{
+    setImgSrc("");
+  };
   
 
     return (
@@ -54,6 +67,7 @@ const Editor = ({initData, onSubmit}) =>{
               value={getStringDate(input.createdDate)}
               type="date"/>
           </section>
+
           <section className="emotion_section">
             <h4>오늘의 감정</h4>
             <div className="emotion_list_wrapper">
@@ -70,6 +84,28 @@ const Editor = ({initData, onSubmit}) =>{
                 isSelected={item.emotionId === input.emotionId} />)}
             </div>
           </section>
+
+          <section className="img_section">
+            <h4>사진을 업로드</h4>
+            <div className="img_wrapper">
+              <div className="Img">
+                <input
+                  className="imgInputArea"
+                  type="file"
+                  accept="image/*"
+                  onChange={e => onUpload(e)}
+                />
+                <img 
+                  className="imgPreview"
+                  alt="사진"
+                  src={imgSrc}
+                />               
+                </div>
+                <button onClick={onClearImg}>clear</button>
+              </div>
+              
+          </section>
+
           <section className="content_section">
             <h4>오늘의 일기</h4>
             <textarea 

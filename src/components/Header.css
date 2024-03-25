@@ -1,4 +1,5 @@
 .Header{
+    background-color: rgb(236, 213, 227);
     display: flex;
     align-items: center;
     padding: 20px 0px;
@@ -16,11 +17,13 @@
 }
 
 .Header .header_left{
+    padding: 4px;
     width: 25%;
     justify-content: start;
 }
 
 .Header .header_right{
+    padding: 4px;
     width: 25%;
     justify-content: end;
 }
