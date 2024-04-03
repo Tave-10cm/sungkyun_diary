@@ -1,10 +1,11 @@
 import { useNavigate } from "react-router-dom";
 import Button from "./Buttons";
-import DiaryItem from "./DiaryItem";
-import "./DiaryList.css";
+import "./OotdList.css";
 import { useState } from "react";
+import OotdItem from "./OotdItem";
+import Weather from "./Weather";
 
-const DiaryList = ({data}) =>{
+const OotdList = ({data}) =>{
     const nav = useNavigate();
     const [sortType, setSortType] = useState("latest");
     const onChangeSortType = (e) =>{
@@ -23,20 +24,26 @@ const DiaryList = ({data}) =>{
     const sortedData = getSortedData();
 
     return (
-        <div className="DiaryList">
+        <div className="OotdList">
             <div className="menu_bar">
                 <select onChange={onChangeSortType}>
                   <option value={"latest"}>최신순</option>
                   <option value={"oldest"}>오래된 순</option>
                 </select>
-                <Button onClick={() => nav("/new")} text={"새 일기 쓰기"} type={"POSITIVE"}/>
-                <Button onClick={() =>nav("/Ootd")} text={"Ootd로 가기"} type={"POSITIVE"}/>
+                <Button onClick={()=>nav("/newOotd")} text={"ootd 작성"} type={"POSITIVE"}/>
+                <Button onClick={() => nav("/home")} text={"일기 페이지로 가기"} type={"POSITIVE"}/>
+                
             </div>
+
+            <div className="weather_clothes">
+                <Weather />
+            </div>
+
             <div className="list_wrapper">
-                {sortedData.map((item)=><DiaryItem key={item.id} {...item}/>)}
+                {sortedData.map((item)=><OotdItem key={item.id} {...item}/>)}
             </div>
         </div>
     )
 };
 
-export default DiaryList;
+export default OotdList;

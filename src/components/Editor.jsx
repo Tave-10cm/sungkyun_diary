@@ -5,6 +5,8 @@ import EmotionItem from "./EmotionItem";
 import { useNavigate } from "react-router-dom";
 import { emotionList } from "../util/content";
 import { getStringDate } from "../util/get-stringed-date";
+import Weather from "./Weather";
+
 
 
 
@@ -66,6 +68,11 @@ const Editor = ({initData, onSubmit}) =>{
               onChange={onChangeInput}
               value={getStringDate(input.createdDate)}
               type="date"/>
+          </section>
+
+          <section className="weather_section">
+            <h4>오늘의 날씨</h4>
+            <Weather />
           </section>
 
           <section className="emotion_section">

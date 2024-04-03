@@ -18,6 +18,9 @@ const Viewer = ({emotionId, content}) =>{
             </div>
           </div>
         </section>
+        <section className="upload_img_section">
+          <h4>오늘의 사진</h4>
+        </section>
         <section className="content_section">
           <h4>오늘의 일기</h4>
           <div className="content_wrapper">
