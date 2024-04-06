@@ -1,6 +1,8 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import weatherDescKo from './WeatherDesc';
+import { Wrapper } from '../style/weather-components';
+import { getClothes } from '../util/clothes-by-temp';
 
 const Weather = () => {
   const API_KEY = import.meta.env.VITE_AXIOS_WEATHER_KEY
@@ -33,10 +35,9 @@ const Weather = () => {
       const weatherKo = weatherDescKo.find(
         (item) => String(item.weatherId) === String(weatherId)
     );
-      console.log(weatherKo.content);
-
       // 소수점 버리기
       const temp = (res.data.main.temp - 273.15).toFixed(1)
+
       setWeather({
         description: weatherKo.content,
         name: locName,
@@ -47,12 +48,13 @@ const Weather = () => {
     }
   }
 
-    
     return (
-      <div>
-        <p>{weather.name}의 날씨 : {weather.description}</p>
-        <p>현재 온도 : {weather.temp} °C</p>
-      </div>
+      <Wrapper>
+
+              <p>{weather.name}의 날씨 : {weather.description}</p>
+              <p>현재 온도 : {weather.temp} °C </p>
+
+      </Wrapper>
     );
 
 };

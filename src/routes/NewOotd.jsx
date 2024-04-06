@@ -3,6 +3,7 @@ import Button from "../components/Buttons";
 import Header from "../components/Header";
 import { useContext, useState } from "react";
 import { DiaryDispatchContext } from "../App";
+import './NewOotd.css';
 
 const NewOotd = () => {
     const nav = useNavigate();

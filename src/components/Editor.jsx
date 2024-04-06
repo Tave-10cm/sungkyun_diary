@@ -69,12 +69,7 @@ const Editor = ({initData, onSubmit}) =>{
               value={getStringDate(input.createdDate)}
               type="date"/>
           </section>
-
-          <section className="weather_section">
-            <h4>오늘의 날씨</h4>
-            <Weather />
-          </section>
-
+          
           <section className="emotion_section">
             <h4>오늘의 감정</h4>
             <div className="emotion_list_wrapper">

@@ -1,0 +1,52 @@
+.newOotd_wrapper > section{
+    margin-bottom: 40px;
+}
+
+.newOotd_wrapper > section > h4{
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.newOotd_wrapper > section > input, textarea{
+    background-color: rgb(236, 236, 236);
+    border: none;
+    border-radius: 5px;
+    font-size: 20px;
+    padding: 10px 20px;
+}
+
+.newOotd_wrapper > section > textarea{
+    padding: 20px;
+    width: 100%;
+    min-height: 100px;
+    resize: vertical;
+    box-sizing: border-box;
+}
+
+.newOotd_wrapper .img_section .img_wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.newOotd_wrapper .Img{
+    display: flex;
+    flex-direction: column;
+
+}
+
+.newOotd_wrapper .Img >input{
+    padding: 5%;
+}
+
+.newOotd_wrapper .imgPreview{
+    background-color: beige;
+    max-width: 300px;
+    height: 200px;
+    padding: 10px 20px;
+    border-radius: 15%;
+
+    object-fit: cover;
+
+    
+}
