@@ -4,6 +4,8 @@ import Button from "../components/Buttons";
 import DiaryList from "../components/DiaryList";
 import { useContext, useState } from "react";
 import { DiaryStateContext } from "../App";
+import { useLogout } from "../hooks/useLogout";
+
 
 const getMonthlyData = (pivotDate, data)=>{
     const beginTime = new Date(
@@ -35,13 +37,14 @@ const Home = () => {
     const monthlyData = getMonthlyData(pivotDate, data);
 
 
-    
     const onIncreaseMonth = () =>{
         setPivotDate(new Date(pivotDate.getFullYear(), pivotDate.getMonth()+1))
     };
     const onDecreaseMonth = () =>{
         setPivotDate(new Date(pivotDate.getFullYear(), pivotDate.getMonth()-1))
     };
+
+    const {logout} = useLogout();
 
     return (
         <div>
@@ -50,6 +53,7 @@ const Home = () => {
              rightChild={<Button onClick={onIncreaseMonth} text={">"}/>}
             />
             <DiaryList data={monthlyData}/> 
+            <Button text={"로그아웃"} onClick={logout} type={"LOGOUT"}/>
         </div>
     )
 

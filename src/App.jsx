@@ -1,4 +1,4 @@
-import {Route, Routes} from 'react-router-dom';
+import {Navigate, Route, Routes} from 'react-router-dom';
 import Home from './routes/Home';
 import Diary from './routes/Diary';
 import New from './routes/New';
@@ -15,6 +15,7 @@ import NewOotd from './routes/NewOotd';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import RootReducers from './reducers/RootReducer';
+import { useAuthContext } from './hooks/useAuthContext';
 
 const ootdExData = [
   {
@@ -126,6 +127,8 @@ function App() {
     })
   }
 
+  const {isAuthReady, user} = useAuthContext();
+
   return (
     <>
       <DiaryStateContext.Provider value={data}>
@@ -137,12 +140,12 @@ function App() {
           }}
         >
          <Routes>
-           <Route path='/' element={<Login />} />
-           <Route path='createAccount' element={<CreateAccount />} /> 
+           <Route path='/' element={!user ? <Login /> : <Navigate replace={true} to="/home"/>} />
+           <Route path='createAccount' element={!user ? <CreateAccount /> : <Navigate replace={true} to="/home"/>} /> 
            <Route path='/new' element={<New/>} />
            <Route path='/diary/:id' element={<Diary/>} />
            <Route path='/edit/:id' element={<Edit />} />
-           <Route path='/home' element={<Home />} />
+           <Route path='/home' element={user ? <Home/> : <Navigate replace={true} to="/"/>}/>
            <Route path='/Ootd' element={<Ootd ootdData={ootdData}/>}/>
            <Route path='/newOotd' element={<NewOotd onCreateOotd={createOotd}/>}/>
            <Route path='*' element={<Notfound/>} />
