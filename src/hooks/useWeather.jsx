@@ -2,7 +2,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import weatherDescKo from './WeatherDesc';
 
-const Weather = () => {
+const useWeather = () => {
   const API_KEY = import.meta.env.VITE_AXIOS_WEATHER_KEY
   const [weather, setWeather] = useState({
     description:"",
@@ -57,4 +57,4 @@ const Weather = () => {
 
 };
 
-export default getWeather;
+export default useWeather;

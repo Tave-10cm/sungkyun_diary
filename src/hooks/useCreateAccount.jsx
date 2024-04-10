@@ -8,7 +8,7 @@ export const useCreateAccount = () =>{
     const [error, setError] = useState(null);
     // 현재 서버와 통신 상태를 저장
     const [isPending, setIspending] = useState(false);
-    const dispatch = useAuthContext();
+    const {dispatch} = useAuthContext();
 
     const signup =(email, password, displayName) => {
         setError(null); //아직 에러가 없다.

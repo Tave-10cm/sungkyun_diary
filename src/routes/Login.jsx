@@ -5,7 +5,7 @@ import { useLogin } from "../hooks/useLogin";
 
 
 
-export default function login(){
+export default function Login(){
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const {error, isPending, login} = useLogin();

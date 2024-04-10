@@ -19,7 +19,7 @@ const authReducer = (state, action) => {
 }
 
 
-// context를 객체를 구독할 컴포넌트의 묶음 범위를 설정합니다.
+// context를 객체를 구독할 컴포넌트의 묶음 범위를 설정합니다. 이것은 main에서 사용됩니다.
 const AuthContextProvider = ({ children }) => {
 
     const [state, dispatch] = useReducer(authReducer, {
