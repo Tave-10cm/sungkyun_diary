@@ -51,9 +51,9 @@ const Home = () => {
             <Header title={`${pivotDate.getFullYear()}년 ${pivotDate.getMonth()+1}월`}
              leftChild={<Button onClick={onDecreaseMonth} text={"<"}/>}
              rightChild={<Button onClick={onIncreaseMonth} text={">"}/>}
+             logout={<Button onClick={logout} text={"로그아웃"} type={"LOGOUT"}/>}
             />
             <DiaryList data={monthlyData}/> 
-            <Button text={"로그아웃"} onClick={logout} type={"LOGOUT"}/>
         </div>
     )
 

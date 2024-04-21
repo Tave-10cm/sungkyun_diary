@@ -5,9 +5,6 @@ import EmotionItem from "./EmotionItem";
 import { useNavigate } from "react-router-dom";
 import { emotionList } from "../util/content";
 import { getStringDate } from "../util/get-stringed-date";
-import Weather from "./Weather";
-
-
 
 
 const Editor = ({initData, onSubmit}) =>{
