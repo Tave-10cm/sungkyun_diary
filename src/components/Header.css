@@ -27,3 +27,7 @@
     width: 25%;
     justify-content: end;
 }
+
+.Header .header_logout{
+    padding: 4px;
+}
