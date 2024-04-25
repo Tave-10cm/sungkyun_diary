@@ -12,6 +12,7 @@ export default function New(){
       onCreate(
         input.createdDate.getTime(),
         input.emotionId,
+        input.imgSrc,
         input.content);
       nav('/home', {replace: true});
     };

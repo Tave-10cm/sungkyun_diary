@@ -18,7 +18,7 @@ const weatherDescKo = [
   { weatherId: 313, content: '소나기와 안개비' },
   { weatherId: 314, content: '강한 소나기와 안개비' },
   { weatherId: 321, content: '소나기' },
-  { weatherId: 500, content: '악한 비' },
+  { weatherId: 500, content: '약한 비' },
   { weatherId: 501, content: '중간 비' },
   { weatherId: 502, content: '강한 비' },
   { weatherId: 503, content: '매우 강한 비' },

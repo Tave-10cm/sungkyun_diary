@@ -28,6 +28,7 @@ const Edit = () =>{
           params.id,
           input.createdDate.getTime(),
           input.emotionId,
+          input.imgSrc,
           input.content
         );
         nav("/home", {replace : true});

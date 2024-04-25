@@ -25,3 +25,9 @@
     gap: 5px;
     justify-content: center;
 }
+
+.OotdList .weather_section{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
