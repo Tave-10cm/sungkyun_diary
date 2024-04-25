@@ -44,18 +44,21 @@ const mockData = [
     id:1,
     createdDate: new Date("2024-04-18").getTime(),
     emotionId:1,
+    imgSrc: supreme,
     content:"4월에 쓴 첫번째 일기"
   },
   {
     id:2,
     createdDate: new Date("2024-03-17").getTime(),
     emotionId:2,
+    imgSrc: supreme,
     content:"3월에 쓴 두번째 일기"
   },
   {
     id:3,
     createdDate: new Date("2024-02-15").getTime(),
     emotionId:3,
+    imgSrc: summer,
     content:"2월에 쓴 일기"
   },
 ]
@@ -68,7 +71,9 @@ function reducer(state, action){ //action의 type이 cud중 해당하는 작업�
     case 'UPDATE':
       return state.map((item) => String(item.id) === String(action.data.id) ? action.data : item);
     case 'DELETE':
-      return state.filter((item)=> String(item.id) !== String(action.id))
+      return state.filter((item)=> String(item.id) !== String(action.data.id));
+    default :
+      return state;
   }
 }
 
@@ -79,7 +84,7 @@ export const OotdStateContext = createContext();
 
 function App() {
 
-  const idRef = useRef();
+  const idRef = useRef(4);
   const [data, dispatch] = useReducer(reducer, mockData);
   
   const ootdIdRef = useRef(4);
@@ -99,22 +104,23 @@ function App() {
 
 
   // 일기장 crud기능 함수
-  const onCreate = (createdDate, emotionId, content) =>{
+  const onCreate = (createdDate, emotionId, imgSrc, content) =>{
     dispatch({
       type: "CREATE",
       data: {
         id: idRef.current++,
         createdDate,
         emotionId,
+        imgSrc,
         content,
       },
     })
   }
-  const onUpdate = (id, createdDate, emotionId, content) =>{
+  const onUpdate = (id, createdDate, emotionId, imgSrc, content) =>{
       dispatch({
         type:"UPDATE",
         data: {
-          id, createdDate, emotionId, content,
+          id, createdDate, emotionId, imgSrc, content,
         },
       })
   }
@@ -123,7 +129,7 @@ function App() {
       type: "DELETE",
       data:{
         id,
-      }
+      },
     })
   }
 

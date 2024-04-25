@@ -1,12 +1,15 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import weatherDescKo from './WeatherDesc';
-import { Wrapper } from '../style/weather-components';
-import { getClothes } from '../util/clothes-by-temp';
+import styled from "styled-components";
+import { getWeatherImage } from '../util/get-weather-imgages';
+import weather1 from "./../assets/weather/weather1.jpg";
+
 
 const Weather = () => {
   const API_KEY = import.meta.env.VITE_AXIOS_WEATHER_KEY
   const [weather, setWeather] = useState({
+    weatherId : 0,
     description:"",
     name:"",
     temp:0,
@@ -24,7 +27,6 @@ const Weather = () => {
       console.error('Error getting user location : ', error);
     });
   }, [])
-
   const getWeather = async(lat, lon) => {
     try{
       const res = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}`);
@@ -38,7 +40,9 @@ const Weather = () => {
       // 소수점 버리기
       const temp = (res.data.main.temp - 273.15).toFixed(1)
 
+
       setWeather({
+        weatherId : weatherId,
         description: weatherKo.content,
         name: locName,
         temp: temp,
@@ -48,12 +52,38 @@ const Weather = () => {
     }
   }
 
+  const Wrapper = styled.div`
+    background-color : white;
+    font-size : 20px;
+    background-image : url(${getWeatherImage(weather.weatherId)});
+    height : 130px;
+    width : 100%;
+    border : 3px solid rgb(236, 236, 236);
+    border-radius : 10px;
+    background-size : 100% 150px;
+  `
+  const Info = styled.p`
+    color : rgb(255, 255, 255);
+    font-family : BMHANNAPro;
+    src : ${"./../public/BMHANNAPro.ttf"};
+    text-align : center;
+    font-weight : bold;
+    margin-top : 70px;
+    height : 10px;
+  `
+
+  const Temp = styled.p`
+  color : rgb(255, 255, 255);
+  font-family : BMHANNAPro;
+  src : ${"./../public/BMHANNAPro.ttf"};
+  text-align : center;
+  font-weight : bold;
+  `
+
     return (
       <Wrapper>
-
-              <p>{weather.name}의 날씨 : {weather.description}</p>
-              <p>현재 온도 : {weather.temp} °C </p>
-
+        <Info>{weather.name}의 날씨 : {weather.description}</Info>
+        <Temp>현재 온도 : {weather.temp} °C </Temp>
       </Wrapper>
     );
 

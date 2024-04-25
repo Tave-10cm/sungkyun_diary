@@ -11,6 +11,7 @@ const Editor = ({initData, onSubmit}) =>{
   const [input, setInput] = useState({
     createdDate : new Date(),
     emotionId : 3,
+    imgSrc : "",
     content : "",
   });
   const nav = useNavigate();
@@ -42,17 +43,22 @@ const Editor = ({initData, onSubmit}) =>{
     onSubmit(input);
   }
   //img upload
-  const [imgSrc, setImgSrc] = useState(null);
+  const [img, setImg] = useState(null);
   const onUpload = (e) =>{
       const reader = new FileReader();
 
       reader.onload = function(e) {
-          setImgSrc(e.target.result);
+          setImg(e.target.result);
       }
       reader.readAsDataURL(e.target.files[0]);
+      const src = URL.createObjectURL(e.target.files[0])
+      setInput({
+        ...input,
+        imgSrc : src,
+      })
   }
   const onClearImg = () =>{
-    setImgSrc("");
+    setImg("");
   };
   
 
@@ -97,7 +103,7 @@ const Editor = ({initData, onSubmit}) =>{
                 <img 
                   className="imgPreview"
                   alt="사진"
-                  src={imgSrc}
+                  src={img}
                 />               
                 </div>
                 <button onClick={onClearImg}>clear</button>

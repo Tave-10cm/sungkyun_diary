@@ -4,15 +4,16 @@ import Button from "./Buttons";
 import "./DiaryItem.css"
 import { emotionList } from "../util/content";
 
-const DiaryItem = ({id, emotionId, createdDate, content})=>{
+const DiaryItem = ({id, emotionId, createdDate, content, imgSrc})=>{
     const nav = useNavigate();
     const emotionItem = emotionList.find(
         (item) => String(item.emotionId) === String(emotionId)
     );
+
     return (
         <div className="DiaryItem">
             <div onClick={()=>nav(`/diary/${id}`)} className={`img_section img_section_${emotionId}`}>
-                <img src={getEmotionImage(emotionId)} />
+                <img src={imgSrc} />
             </div>
             <div onClick={()=>nav(`/diary/${id}`)} className="info_section">
                 <div className="created_date">

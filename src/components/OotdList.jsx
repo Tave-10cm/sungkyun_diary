@@ -35,7 +35,7 @@ const OotdList = ({data}) =>{
                 
             </div>
 
-            <div className="weather_clothes">
+            <div className="weather_section">
                 <Weather />
             </div>
 
