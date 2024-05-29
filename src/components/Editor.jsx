@@ -22,7 +22,7 @@ const Editor = ({initData, onSubmit}) =>{
         ...initData,
         createdDate : new Date(Number(initData.createdDate)),
       })
-    }
+    } 
   }, [initData])
   
   const onChangeInput = (e) =>{
@@ -31,7 +31,7 @@ const Editor = ({initData, onSubmit}) =>{
     let value = e.target.value;
 
     if(name === "createdDate"){
-      value = new Date(value); //문자열이 저장되지 않게 하기위해
+      value = new Date(value);
     }
 
     setInput({
